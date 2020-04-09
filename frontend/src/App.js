@@ -1,43 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './styles.css'
 
-function Button(props) {
-  const handleClick = () => props.onClickFunction(props.increment);
-  return (
-    <button onClick={handleClick}>
-      +{props.increment}
-    </button>
-  );
-}
 
-function Display (props) {
-  return (
-    <div>{props.message}</div>
-  );
-}
+const testData = [
+		{name: "Dan Abramov", avatar_url: "https://avatars0.githubusercontent.com/u/810438?v=4", company: "@facebook"},
+    {name: "Sophie Alpert", avatar_url: "https://avatars2.githubusercontent.com/u/6820?v=4", company: "Humu"},
+ 		{name: "Sebastian Markbåge", avatar_url: "https://avatars2.githubusercontent.com/u/63648?v=4", company: "Facebook"},
+];
 
-function HourNow () {
-  return(
+
+const CardList = (props) => (
   <div>
-    Hello HTML
-    <input />
-    <pre>{(new Date).toLocaleTimeString()}</pre>
+    <Card {...testData[0]}/>
+    <Card {...testData[1]}/>
   </div>
-  );
+)
+
+class Card extends React.Component{
+  render() {
+    const profile = this.props;
+    return(
+      <div className="github-profile">
+        <img src={profile.avatar_url} />
+        <div className="info">
+          <div className="name">{profile.name}</div>
+          <div className="company">{profile.company}</div>
+        </div>
+      </div>
+    )
+  }
 }
 
-function App() {
-  const [ counter, setCounter ] = useState(0)
-  const incrementCounter = (incrementValue) => setCounter(counter + incrementValue); 
-  return (
-    <div>
-      <HourNow />
-      <Button onClickFunction={incrementCounter} increment={1}/>
-      <Button onClickFunction={incrementCounter} increment={5}/>
-      <Button onClickFunction={incrementCounter} increment={10}/>
-      <Button onClickFunction={incrementCounter} increment={100}/>
-      <Display message={counter}/>
-    </div>
-  );
+class App extends React.Component {
+  render(){
+    return (
+      <div>
+        <div className="header">{this.props.title}</div>
+        <CardList />
+      </div>
+    );
+  }  
 }
 
 export default App;
