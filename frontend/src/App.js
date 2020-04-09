@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css'
+import axios from 'axios'; 
 
 
 const testData = [
@@ -30,10 +31,22 @@ class Card extends React.Component{
 }
 
 class Form extends React.Component {
+  state = { userName:''};
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    const resp = await axios.get(`https://api.github.com/users/${this.state.userName}`);
+    this.props.onSubmit(resp.data);
+  };
   render(){
     return (
-      <form action="">
-        <input type="Text" placeholder="GitHub username" />
+      <form onSubmit={this.handleSubmit}>
+        <input
+         type="Text" 
+         value={this.state.userName}
+         onChange={event => this.setState({ userName: event.target.value })}
+         placeholder="GitHub username" 
+         required
+         />
         <button>Add card</button>
       </form>
     );
@@ -41,20 +54,20 @@ class Form extends React.Component {
 }
 
 class App extends React.Component {
-//  constructor(props){
-//    super(props);
-//    this.state = {
-//      profiles: testData,
-//    };
-//  }
-state ={
+  state ={
   profiles: testData,
-}
+  };
+  addNewProfile = (profileData) => {
+    this.setState(prevState => ({
+      profiles: [...prevState.profiles, profileData]
+    }) )
+  };
+
   render(){
     return (
       <div>
         <div className="header">{this.props.title}</div>
-        <Form />
+        <Form onSubmit={this.addNewProfile}/>
         <CardList profiles={this.state.profiles}/>
       </div>
     );
