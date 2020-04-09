@@ -29,6 +29,11 @@ Abaixo temos uma lista dos pré-requisitos para utilização e desenvolvimento d
 
 Nós usamos [Git](https://git-scm.com/) para controle de versionamento.
 
+### v1
+* [cabca19](https://github.com/Wanhenri/praticandoReact/commit/cabca197358b94ce0c72e6a09849e322a3066e7c) - A versão onde existe o "The Github Cards App"
+
+* []() - A versão onde existe o "The star Match Game"
+
 ## Autores
 
 * **Wanderson Henrique dos Santos** - *Desenvolvedor do Projeto* - [Wanhenri](https://github.com/Wanhenri)
