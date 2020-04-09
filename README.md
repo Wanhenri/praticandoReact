@@ -1,4 +1,4 @@
-# Desenvolvimento do Projeto Portfolio
+# Desenvolvimento e aplicação dos conhecimentos de React
 
 Aplicando conhecimentos adquiridos nos cursos da plataforma [pluralsight](https://app.pluralsight.com).
 
