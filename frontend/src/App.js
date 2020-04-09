@@ -9,13 +9,6 @@ const testData = [
 ];
 
 
-const CardList = (props) => (
-  <div>
-    <Card {...testData[0]}/>
-    <Card {...testData[1]}/>
-  </div>
-)
-
 class Card extends React.Component{
   render() {
     const profile = this.props;
@@ -30,6 +23,13 @@ class Card extends React.Component{
     )
   }
 }
+
+
+const CardList = (props) => (
+  <div>
+    {testData.map(profile => <Card {...profile}/>)}
+  </div>
+)
 
 class App extends React.Component {
   render(){
