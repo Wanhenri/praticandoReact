@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css'
 
+// modificação para fazer push
+
 const StarsDisplay = props => (
   <>
     {utils.range(1, props.count).map(starId => (
